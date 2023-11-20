@@ -11,7 +11,9 @@ For ease of reproducibility, we suggest you install `Anaconda` before executing 
 
 ```bash
 git clone https://github.com/JiaxiangHuang/PFSSA.git
-cd PFSSA/src
+cd PFSSA
+mkdir checkpoints
+cd src
 conda create -n pfssa python=3.7
 conda activate pfssa
 pip install -r ./requirements.txt 
