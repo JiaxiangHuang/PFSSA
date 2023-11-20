@@ -1,4 +1,4 @@
-# PFSSA-Beyond Pixel-wise Unmixing: Spatial-Spectral Attention Fully Convolutional Networks for Abundance Estimation
+# PFSSA — Beyond Pixel-wise Unmixing: Spatial-Spectral Attention Fully Convolutional Networks for Abundance Estimation
 
 This repository contains the official PyTorch implementation of the paper:
 Jiaxiang Huang, Puzhao Zhang. Beyond Pixel-wise Unmixing: Spatial-Spectral Attention Fully Convolutional Networks for Abundance Estimation
