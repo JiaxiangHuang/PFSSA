@@ -6,12 +6,10 @@
 """
 import argparse
 
+
 def get_args():
     parser = argparse.ArgumentParser(description='Args ')
 
-    """
-    python PFSSA.py -src_dir ../data/synthetic_spheric/ -img_name abd_spheric0 -training_file img_spheric0.mat -labels_file abd_spheric0.mat -nrow_ori_img 128 -ncol_ori_img 128 -num_bands 431 -end_members 5 -pad_left 0 -pad_right 0
-    """
     parser.add_argument('--src_dir', '-src_dir', type=str, required=True,
                         help='System path to the data directory.')
     parser.add_argument('--img_name', '-img_name', type=str, required=True,
@@ -20,23 +18,23 @@ def get_args():
                         help="Hyperspectral image")
     parser.add_argument('--labels_file', '-labels_file', type=str, required=True,
                         help='Abundance ground truth.')
-    parser.add_argument('--nrow_ori_img', '-nrow_ori_img',type=int, required=True,
+    parser.add_argument('--nrow_ori_img', '-nrow_ori_img', type=int, required=True,
                         help='Number of rows of the hyperspectral image. '
                              'Samson=95, JaperRidge=100, Urban=307, Spheric=128')
-    parser.add_argument('--ncol_ori_img', '-ncol_ori_img',type=int, required=True,
+    parser.add_argument('--ncol_ori_img', '-ncol_ori_img', type=int, required=True,
                         help='Number of columns of the hyperspectral image. '
                              'Samson=95, JaperRidge=100, Urban=307, Spheric=128')
-    parser.add_argument('--num_bands', '-num_bands',type=int, required=True,
+    parser.add_argument('--num_bands', '-num_bands', type=int, required=True,
                         help='Number of num bands of the hyperspectral image. '
                              'Samson=156, JaperRidge=198, Urban=162, Spheric=431')
-    parser.add_argument('--end_members', '-end_members',type=int, required=True,
+    parser.add_argument('--end_members', '-end_members', type=int, required=True,
                         help='Number of end members of the hyperspectral image. '
                              'Samson=3, JaperRidge=4, Urban=4, Spheric=5')
     parser.add_argument('--pad_left', '-pad_left', type=int, required=True,
-                        help='Number of columns padding on the left for the hyperspectral image before split data. pad_top=pad_left.'
+                        help='Number of columns padding on the left for image before splitting. pad_top=pad_left.'
                              'Samson=0, JaperRidge=0, Urban=0, Spheric=0')
     parser.add_argument('--pad_right', '-pad_right', type=int, required=True,
-                        help='Number of columns padding on the right for the hyperspectral image before split data. pad_bottom=pad_right'
+                        help='Number of columns padding on the right for image before splitting. pad_bottom=pad_right'
                              'Samson=1, JaperRidge=0, Urban=1, Spheric=0')
 
     parser.add_argument('--epochs', '-epochs', type=int, default=500,
@@ -59,6 +57,8 @@ def get_args():
                         help='Values of gamma for optim.lr_scheduler.')
     parser.add_argument('--pca_out_dim', '-pca_out_dim', type=int, default=64,
                         help='Out dimension for PCA.')
+    parser.add_argument('--weight', '-weight', type=float, default=0.2,
+                        help='Weight of loss.')
 
     parser.add_argument('--threshold', '-threshold', type=float, default=1.0,
                         help='Defines the threshold for the softplus activation function.')
@@ -68,9 +68,9 @@ def get_args():
                         help="Attention network planes.")
     parser.add_argument('--save_ckpt_dir', '-save_ckpt_dir', type=str, default='../checkpoints',
                         help='System path for saving checkpoints.')
-    parser.add_argument('--save_ckpt_freq', '-save_ckpt_freq', type=int, default=100,
+    parser.add_argument('--save_ckpt_freq', '-save_ckpt_freq', type=int, default=500,
                         help='Frequences (epochs) for saving checkpoints.')
-    parser.add_argument('--print_freq', '-print_freq', type=int, default=50,
+    parser.add_argument('--print_freq', '-print_freq', type=int, default=20,
                         help='Frequences (epochs) for output print.')
 
     opt = parser.parse_args()
