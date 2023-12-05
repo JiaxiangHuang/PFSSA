@@ -10,6 +10,9 @@ import argparse
 def get_args():
     parser = argparse.ArgumentParser(description='Args ')
 
+    """
+    python PFSSA.py -src_dir ../data/Samson/ -img_name samson -training_file samson_1.mat -labels_file end3.mat -nrow_ori_img 95 -ncol_ori_img 95 -num_bands 156 -end_members 3 -pad_left 0 -pad_top 1 -pad_right 1 -pad_bottom 0
+    """
     parser.add_argument('--src_dir', '-src_dir', type=str, required=True,
                         help='System path to the data directory.')
     parser.add_argument('--img_name', '-img_name', type=str, required=True,
@@ -31,10 +34,16 @@ def get_args():
                         help='Number of end members of the hyperspectral image. '
                              'Samson=3, JaperRidge=4, Urban=4, Spheric=5')
     parser.add_argument('--pad_left', '-pad_left', type=int, required=True,
-                        help='Number of columns padding on the left for image before splitting. pad_top=pad_left.'
+                        help='Number of columns padding on the left for image before splitting.'
+                             'Samson=0, JaperRidge=0, Urban=0, Spheric=0')
+    parser.add_argument('--pad_top', '-pad_top', type=int, required=True,
+                        help='Number of columns padding on the top for image before splitting.'
                              'Samson=0, JaperRidge=0, Urban=0, Spheric=0')
     parser.add_argument('--pad_right', '-pad_right', type=int, required=True,
-                        help='Number of columns padding on the right for image before splitting. pad_bottom=pad_right'
+                        help='Number of columns padding on the right for image before splitting.'
+                             'Samson=1, JaperRidge=0, Urban=1, Spheric=0')
+    parser.add_argument('--pad_bottom', '-pad_bottom', type=int, required=True,
+                        help='Number of columns padding on the bottom for image before splitting.'
                              'Samson=1, JaperRidge=0, Urban=1, Spheric=0')
 
     parser.add_argument('--epochs', '-epochs', type=int, default=500,

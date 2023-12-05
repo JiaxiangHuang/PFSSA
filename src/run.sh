@@ -8,7 +8,9 @@ python PFSSA.py\
  -num_bands 156\
  -end_members 3\
  -pad_left 0\
+ -pad_top 1\
  -pad_right 1\
+ -pad_bottom 0\
 
 
 
