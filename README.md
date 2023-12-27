@@ -22,7 +22,7 @@ pip install -r ./requirements.txt
 sh run.sh
 ```
 
-## Reference
+## Citation
 
 ```
 @article{huang2023beyond,
